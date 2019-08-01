@@ -21,7 +21,7 @@ export class AuthenticationService {
 
   constructor(private http: HttpClient) { }
 
-  register(user: { username: string, password: string }): Observable<boolean> {
+  register(user: { username: string, email: string, money: string, password: string }): Observable<boolean> {
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
     return this.http.post<any>(`${environment.apiUrl}/register`, user, { headers })
