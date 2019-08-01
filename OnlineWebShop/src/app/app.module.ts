@@ -12,8 +12,8 @@ import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { AuthenticationService } from "./Services/authentication.service";
-import { AuthInterceptor } from "src/app/authentication.interceptor";
+// import { AuthenticationService } from "./Services/authentication.service";
+// import { AuthInterceptor } from "../../../authentication.interceptor";
 import { MatCardModule } from "@angular/material/card";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatListModule } from "@angular/material/list";
@@ -67,12 +67,12 @@ import {
     MatSelectModule
   ],
   providers: [
-    AuthenticationService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    },
+    // AuthenticationService,
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: AuthInterceptor,
+    //   multi: true
+    // },
     PipeService
   ],
   bootstrap: [AppComponent]

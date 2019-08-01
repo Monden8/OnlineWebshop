@@ -22,10 +22,11 @@ export class RegisterComponent implements OnInit {
     let user = {
       username: this.form.get('username').value,
       password: this.form.get('password').value,
-      email: this.form.get('username').value,
-      money: this.form.get('username').value,
+      email: this.form.get('email').value,
+      money: this.form.get('money').value,
     }
-    this.authsvc.register(user).subscribe(
+    this.authsvc.register(user)
+    .subscribe(
       res => {
         if (!res) {
           this.valid = false;

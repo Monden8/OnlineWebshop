@@ -21,37 +21,33 @@ export class AuthenticationService {
 
   constructor(private http: HttpClient) { }
 
-  register(user: { username: string, password: string, email: string, money: string }): Observable<boolean> {
+  register(user: { username: string, password: string, email: string, money: number }): Observable<boolean> {
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
     return this.http.post<any>(`${environment.apiUrl}/register`, user, { headers })
       .pipe(
         tap(res => {
-          console.log(res)
-          // let tokens = {
-          //   jwt: res.t,
-          //   refreshToken: res.rt
-          // }
-          // this.doLoginUser(user.username, tokens)
+          let tokens= {jwt:res.t,refreshToken:res.rt}
+          this.doLoginUser(user.username,tokens)
         }),
         mapTo(true),
-        catchError(error => {
-          console.log(error)
+        catchError(error => {   
+          console.log('hami')
           return of(false);
         }));
   }
 
-  login(user: { username: string, password: string }): Observable<boolean> {
-    let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    return this.http.post<any>(`${environment.apiUrl}/login`, user, { headers })
-      .pipe(
-        tap(res => { this.doLoginUser(user.username, res.tokens) }),
-        mapTo(true),
-        catchError(error => {
-          return of(false);
-        }));
-  }
+  // login(user: { username: string, password: string }): Observable<boolean> {
+  //   let headers: HttpHeaders = new HttpHeaders();
+  //   headers = headers.append('Content-Type', 'application/json');
+  //   return this.http.post<any>(`${environment.apiUrl}/login`, user, { headers })
+  //     .pipe(
+  //       tap(res => { this.doLoginUser(user.username, res.tokens) }),
+  //       mapTo(true),
+  //       catchError(error => {
+  //         return of(false);
+  //       }));
+  // }
 
   logout(): Observable<boolean> {
     let headers: HttpHeaders = new HttpHeaders();
