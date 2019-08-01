@@ -2,3 +2,61 @@ html,body{
     width: 100vw;
     height: 100vh;
 }
+.main {
+  margin-left: 30px;
+}
+.name {
+  margin-top: 12vh;
+  grid-area: name;
+}
+.image {
+  grid-area: image;
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-area: menu;
+}
+.description {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-area: description;
+}
+.condition {
+  grid-area: condition;
+}
+.username {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-area: right;
+  grid-area: username;
+}
+.time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-area: time;
+}
+.cost {
+  grid-area: cost;
+}
+.wishlist {
+  grid-area: wishlist;
+}
+.main {
+  display: grid;
+  grid-template-areas:
+    "name name name name"
+    "image image  condition condition "
+    "image image  description description "
+    "image image  description description "
+    "time auction  cost wishlist";
+  grid-gap: 10px;
+  padding: 10px;
+}
+img {
+  width: 80px;
+  height: 80px;
+}
