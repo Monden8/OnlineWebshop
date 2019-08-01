@@ -6,7 +6,7 @@ const addItem = (req, res) => {
   
   findUserByToken(rt)
     .then(result => addnewItem(name, expiryDate, img, details, usage, result))
-    .then(() => { res.status(200).send('ok') })
+    .then(() => { res.status(200).json({ message: 'ok'}) })
     .catch((err) => {
       if (err.errors) {
         res.status(400).json({ status: 'error', message: err.message });
