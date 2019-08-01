@@ -5,7 +5,7 @@ const { userLogin } = require('../controllers/login-controller');
 const { userLogout } = require('../controllers/logout-controller');
 const { addItem } = require('../controllers/additem-controller');
 const { getItems } = require('../controllers/getitems-controller');
-
+const { getMySelling } = require('../controllers/getMyItems_forSale-controller');
 
 const router = express.Router();
 
@@ -14,6 +14,7 @@ router.post('/login', userLogin);
 router.post('/logout', userLogout);
 router.post('/additem', addItem);
 router.get('/main', getItems);
+router.get('/myitems', getMySelling);
 
 
 module.exports = router;

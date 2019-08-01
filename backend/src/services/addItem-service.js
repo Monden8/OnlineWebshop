@@ -1,8 +1,9 @@
 const Items = require('../models/items.model');
 
-const addnewItem = (name, expiryDate, img, details, usage, result) => new Promise((resolve, reject) => {
+const addnewItem = (name, price, expiryDate, img, details, usage, result) => new Promise((resolve, reject) => {
   const newItem = new Items({ 
-    name, 
+    name,
+    price,
     expiryDate: Math.floor((Date.now() / 1000) + 2629743000),
     img, 
     details, 
@@ -13,7 +14,6 @@ const addnewItem = (name, expiryDate, img, details, usage, result) => new Promis
     if (err) {
       reject(err);
     } else {
-      console.log(data)
       resolve(data);
     }
   });
