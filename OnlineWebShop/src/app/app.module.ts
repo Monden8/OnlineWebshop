@@ -8,6 +8,8 @@ import { RegisterComponent } from './Components/register/register.component';
 import { FrontpageComponent } from './Components/frontpage/frontpage.component';
 import { TimestampPipe } from './Pipes/timestamp.pipe';
 import { TrolleyComponent } from './Components/trolley/trolley.component';
+import { SearchBarComponent } from './Components/search-bar/search-bar.component';
+import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { TrolleyComponent } from './Components/trolley/trolley.component';
     RegisterComponent,
     FrontpageComponent,
     TimestampPipe,
-    TrolleyComponent
+    TrolleyComponent,
+    SearchBarComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
