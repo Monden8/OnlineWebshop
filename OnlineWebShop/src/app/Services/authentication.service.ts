@@ -32,7 +32,6 @@ export class AuthenticationService {
         }),
         mapTo(true),
         catchError(error => {
-          console.log('hami')
           return of(false);
         }));
   }

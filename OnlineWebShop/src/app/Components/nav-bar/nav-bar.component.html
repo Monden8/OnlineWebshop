@@ -6,6 +6,6 @@
 <button mat-raised-button *ngIf="isLoggedIn()" routerLink="/register">
   Register
 </button>
-<button mat-raised-button *ngIf="!isLoggedIn()" routerLink="/">
+<button mat-raised-button *ngIf="!isLoggedIn()" (click)="logout()" routerLink="/">
   Logout
 </button>
