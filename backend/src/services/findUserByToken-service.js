@@ -8,7 +8,8 @@ const findUserByToken = token => new Promise((resolve, reject) => {
     if (err) {
       reject(err);
     } else {
-      resolve(data);
+      const result = { username: data[0].username, user_id: data[0]._id }
+      resolve(result);
     }
   });
 });
