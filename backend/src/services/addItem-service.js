@@ -3,7 +3,7 @@ const Items = require('../models/items.model');
 const addnewItem = (name, expiryDate, img, details, usage, result) => new Promise((resolve, reject) => {
   const newItem = new Items({ 
     name, 
-    expiryDate: ((Date.now() / 1000) + 2629743000),
+    expiryDate: Math.floor((Date.now() / 1000) + 2629743000),
     img, 
     details, 
     usage, 
