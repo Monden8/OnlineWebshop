@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
+mongoose.set('useFindAndModify', false);
 
 const User = mongoose.Schema({
   username: {
@@ -18,6 +19,10 @@ const User = mongoose.Schema({
   money: {
     type: Number,
     required: true, 
+  },
+  refreshToken: {
+    type: String,
+    required: false, 
   },
 });
 
