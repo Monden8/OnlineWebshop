@@ -1,10 +1,26 @@
-<mat-list *ngFor="let item of items">
-  <mat-list-item>{{ item.name }}</mat-list-item>
-  <img mat-card-image src="{{item.img}}" alt="img" />
-  <mat-list-item>{{ item.usage }}</mat-list-item>
-  <mat-list-item>{{ item.details }}</mat-list-item>
-  <!-- <mat-list-item>{{ item.cost }}</mat-list-item> -->
-  <mat-list-item>{{ item.expiryDate }} timestömp</mat-list-item>
-  <mat-list-item>{{ item.username }}</mat-list-item>
-  <button mat-raised-button (click)="check()">Wishlist</button>
-</mat-list>
+<div class="main" *ngFor="let item of items">
+  <div class="name">
+    <h1>{{ item.name }}</h1>
+  </div>
+  <div class="image">
+    <img mat-card-image src="{{ item.img }}" alt="img" />
+  </div>
+  <div class="description">
+    <h2>Description: {{ item.details }}</h2>
+  </div>
+  <div class="condition">
+    <h2>Condition: {{ item.usage }}</h2>
+  </div>
+  <div class="time">
+    <h4>Owner: {{ item.username }}</h4>
+  </div>
+  <div class="auction">
+    <h5>Time Left: {{ item.expiryDate }} timestömp</h5>
+  </div>
+  <div class="cost">
+    <h2>Cost: {{ item.price }}</h2>
+  </div>
+  <div class="wishlist">
+    <button mat-raised-button (click)="check()">Wishlist</button>
+  </div>
+</div>

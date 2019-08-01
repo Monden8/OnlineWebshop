@@ -1,9 +1,25 @@
+.mainy {
+  z-index: 1;
+  position: fixed;
+  margin: 0px;
+  padding: 0px;
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background-image: url("http://www.hdnicewallpapers.com/Walls/Big/Abstract/White_Texture_Pattern_Abstract_4K_Wallpaper.jpg");
+  background-repeat: no-repeat;
+  background-size: 100vw;
+  background-attachment: fixed;
+}
 img {
   border: 0px;
   text-decoration: none;
   width: 64px;
   height: 64px;
   position: fixed;
+  top: -6px;
   left: 10px;
   padding: 10px 0px 0px 10px;
   outline: none;
@@ -17,6 +33,7 @@ img:active {
   text-decoration: none;
 }
 button {
+  top: -6px;
   margin-left: 20px;
   margin-right: 20px;
   background-color: black;

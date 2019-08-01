@@ -16,7 +16,6 @@ export class FrontpageComponent implements OnInit {
   ngOnInit() {
     this.getAllItems()
   }
-  
   getAllItems() {
     this.item.getItems().subscribe(res => {
       this.items = res
