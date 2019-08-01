@@ -1,8 +1,10 @@
-<mat-list>
-  <mat-list-item>Janika biciklije</mat-list-item>
-  <mat-list-item><img src="" alt="img"/></mat-list-item>
-  <mat-list-item>Usage</mat-list-item>
-  <mat-list-item>Description</mat-list-item>
-  <mat-list-item>Moneeey</mat-list-item>
-  <button mat-raised-button (click)="check()" >Wishlist</button>
+<mat-list *ngFor="let item of items">
+  <mat-list-item>{{ item.name }}</mat-list-item>
+  <img mat-card-image src="{{item.img}}" alt="img" />
+  <mat-list-item>{{ item.usage }}</mat-list-item>
+  <mat-list-item>{{ item.details }}</mat-list-item>
+  <!-- <mat-list-item>{{ item.cost }}</mat-list-item> -->
+  <mat-list-item>{{ item.expiryDate }} timestömp</mat-list-item>
+  <mat-list-item>{{ item.username }}</mat-list-item>
+  <button mat-raised-button (click)="check()">Wishlist</button>
 </mat-list>
