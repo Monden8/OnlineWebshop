@@ -2,7 +2,7 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpErrorResponse
 import { Injectable } from '@angular/core';
 import { AuthenticationService } from './Services/authentication.service';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
-import { catchError, filter, take, switchMap } from 'rxjs/operators';
+// import { catchError, filter, take, switchMap } from 'rxjs/operators';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -34,24 +34,24 @@ export class AuthInterceptor implements HttpInterceptor {
         });
     }
 
-    private handle418Error(request: HttpRequest<any>, next: HttpHandler) {
-        if (!this.isRefreshing) {
-            this.isRefreshing = true;
-            this.refreshTokenSubject.next(null);
-            return this.authService.refreshToken().pipe(
-                switchMap((token: any) => {
-                    this.isRefreshing = false;
-                    this.refreshTokenSubject.next(token.jwt);
-                    return next.handle(this.addToken(request, token.jwt));
-                }));
+    // private handle418Error(request: HttpRequest<any>, next: HttpHandler) {
+    //     if (!this.isRefreshing) {
+    //         this.isRefreshing = true;
+    //         this.refreshTokenSubject.next(null);
+    //         return this.authService.refreshToken().pipe(
+    //             switchMap((token: any) => {
+    //                 this.isRefreshing = false;
+    //                 this.refreshTokenSubject.next(token.jwt);
+    //                 return next.handle(this.addToken(request, token.jwt));
+    //             }));
 
-        } else {
-            return this.refreshTokenSubject.pipe(
-                filter(token => token != null),
-                take(1),
-                switchMap(jwt => {
-                    return next.handle(this.addToken(request, jwt));
-                }));
-        }
-    }
+    //     } else {
+    //         return this.refreshTokenSubject.pipe(
+    //             filter(token => token != null),
+    //             take(1),
+    //             switchMap(jwt => {
+    //                 return next.handle(this.addToken(request, jwt));
+    //             }));
+    //     }
+    // }
 };

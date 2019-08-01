@@ -6,16 +6,16 @@ import { RegisterComponent } from './Components/register/register.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: FrontpageComponent
-  },
-  {
     path: 'login',
     component: LoginComponent
   },
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: '',
+    component: FrontpageComponent
   },
   // {
   //   path: 'submit',
