@@ -1,11 +1,21 @@
-<img src="" alt="logo" routerLink="/" />
-<h1>Welcome message</h1>
-<button mat-raised-button *ngIf="isLoggedIn()" routerLink="/login">
-  Login
-</button>
-<button mat-raised-button *ngIf="isLoggedIn()" routerLink="/register">
-  Register
-</button>
-<button mat-raised-button *ngIf="!isLoggedIn()" (click)="logout()" routerLink="/">
+<img
+  src="https://image.flaticon.com/icons/png/512/33/33447.png"
+  alt="logo"
+  routerLink="/"
+/>
+<div>
+  <button mat-raised-button *ngIf="isLoggedIn()" routerLink="/login">
+    Login
+  </button>
+  <button mat-raised-button *ngIf="isLoggedIn()" routerLink="/register">
+    Register
+  </button>
+</div>
+<button
+  mat-raised-button
+  *ngIf="!isLoggedIn()"
+  (click)="logout()"
+  routerLink="/"
+>
   Logout
 </button>

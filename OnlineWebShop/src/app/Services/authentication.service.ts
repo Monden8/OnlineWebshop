@@ -55,14 +55,13 @@ export class AuthenticationService {
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
     headers = headers.append('Authorization', `Bearer ${this.getJwtToken()}`);
-    return this.http.post<any>(`${environment.apiUrl}/logout`, {
-      'refreshToken': this.getRefreshToken()
-    }, {}).pipe(
-      tap(() => this.doLogoutUser()),
-      mapTo(true),
-      catchError(error => {
-        return of(false);
-      }));
+    return this.http.post<any>(`${environment.apiUrl}/logout`, { 'rt': this.getRefreshToken() }, { headers })
+      .pipe(
+        tap(() => this.doLogoutUser()),
+        mapTo(true),
+        catchError(error => {
+          return of(false);
+        }));
   }
 
   isLoggedIn() {

@@ -1,0 +1,25 @@
+img {
+  border: 0px;
+  text-decoration: none;
+  width: 64px;
+  height: 64px;
+  position: fixed;
+  left: 10px;
+  padding: 10px 0px 0px 10px;
+  outline: none;
+}
+img:focus,
+img:hover,
+img:visited,
+img:active {
+  outline: none;
+  border: 0px;
+  text-decoration: none;
+}
+button {
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: black;
+  color: white;
+  font-size: 1.4rem;
+}
