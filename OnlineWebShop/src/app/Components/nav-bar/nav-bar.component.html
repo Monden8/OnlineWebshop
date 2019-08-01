@@ -1,4 +1,8 @@
 <img src="" alt="logo" routerLink="/" />
 <h1>Welcome message</h1>
-<button mat-raised-button routerLink="/login" >Login</button>
-<button mat-raised-button routerLink="/register">Register</button>
+<button mat-raised-button *ngIf="isLoggedIn()" routerLink="/login">
+  Login
+</button>
+<button mat-raised-button *ngIf="isLoggedIn()" routerLink="/register">
+  Register
+</button>

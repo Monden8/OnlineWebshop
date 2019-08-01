@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from 'src/app/Services/authentication.service';
 
 @Component({
   selector: 'app-frontpage',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FrontpageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authsvc: AuthenticationService) { }
 
   ngOnInit() {
   }
-
+  isLoggedIn() {
+    return !this.authsvc.isLoggedIn();
+  }
 }

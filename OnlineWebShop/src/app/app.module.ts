@@ -12,7 +12,7 @@ import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-// import { AuthenticationService } from "./Services/authentication.service";
+import { AuthenticationService } from "./Services/authentication.service";
 // import { AuthInterceptor } from "../../../authentication.interceptor";
 import { MatCardModule } from "@angular/material/card";
 import { MatDividerModule } from "@angular/material/divider";
@@ -26,6 +26,7 @@ import {
   MatRippleModule,
   MatCheckboxModule
 } from "@angular/material";
+import { AuthGuard } from './Guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import {
     MatSelectModule
   ],
   providers: [
-    // AuthenticationService,
+    AuthGuard,
+    AuthenticationService,
     // {
     //   provide: HTTP_INTERCEPTORS,
     //   useClass: AuthInterceptor,
