@@ -28,7 +28,7 @@ import {
 } from "@angular/material";
 import { AuthGuard } from './Guards/auth.guard';
 import { DialogComponent } from './Components/dialog/dialog.component';
-import { StuffDialogComponent } from './stuff-dialog/stuff-dialog.component';
+import { StuffDialogComponent } from './Components/stuff-dialog/stuff-dialog.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +83,6 @@ import { StuffDialogComponent } from './stuff-dialog/stuff-dialog.component';
     PipeService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [DialogComponent]
+  entryComponents: [DialogComponent, StuffDialogComponent]
 })
 export class AppModule { }

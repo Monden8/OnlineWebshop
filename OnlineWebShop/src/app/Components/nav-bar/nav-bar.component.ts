@@ -3,6 +3,7 @@ import { AuthenticationService } from 'src/app/Services/authentication.service';
 import { DialogComponent } from '../dialog/dialog.component';
 import { MatDialog } from '@angular/material';
 import { ItemListService } from 'src/app/Services/item-list.service';
+import { StuffDialogComponent } from '../stuff-dialog/stuff-dialog.component';
 
 @Component({
   selector: 'app-nav-bar',
@@ -15,14 +16,33 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit() {
   }
+
   func(what: string) {
-    this.itemsvc.getMyItems()
-    this.dialog.open(DialogComponent, {
-      data: {
-        Item: jani,
-        Cost: jani
-      }
-    })
+    if (what == 'item') {
+      this.itemsvc.getMyItems().subscribe(res => {
+        if (res.length < 1) {
+          this.dialog.open(DialogComponent, {
+            data: { message: 'You did not have any ongoing auctions!' }
+          })
+        } else {
+          this.dialog.open(StuffDialogComponent, {
+            data: {}
+          })
+        }
+      })
+    } else {
+      this.itemsvc.getMyCart().subscribe(res => {
+        if (res.length < 1) {
+          this.dialog.open(DialogComponent, {
+            data: { message: 'You did not have any ongoing auctions!' }
+          })
+        } else {
+          this.dialog.open(StuffDialogComponent, {
+            data: {}
+          })
+        }
+      })
+    }
   }
   isLoggedIn() {
     return !this.authsvc.isLoggedIn();

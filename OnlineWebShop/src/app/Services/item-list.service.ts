@@ -28,6 +28,10 @@ export class ItemListService {
         return of(false);
       }));
   }
-  getMyItems(){}
-  getMyCart(){}
+  getMyItems(): any {
+    return this.http.get<any>(`${environment.apiUrl}/myitems`, { headers: this.headers })
+  }
+  getMyCart(): any {
+    return this.http.get<any>(`${environment.apiUrl}/wishlist`, { headers: this.headers })
+  }
 }

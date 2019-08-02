@@ -14,7 +14,7 @@ export class AuthenticationInterceptor implements HttpInterceptor {
 
     intercept(request: HttpRequest<any>, next: HttpHandler): any {
         if (this.authService.isLoggedIn()) {
-            request = this.addToken(request, this.authService.getJwtToken());
+            request = this.addToken(request, this.authService.getRefreshToken());
         }
         return next.handle(request).pipe(catchError(error => {
             if (error instanceof HttpErrorResponse && error.status === 418) {
