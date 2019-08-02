@@ -8,16 +8,15 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./stuff-dialog.component.css']
 })
 export class StuffDialogComponent implements OnInit {
-  name: string;
-  price: number;
+
+  respon: Array<any>
+
   constructor(
     @Inject(MAT_DIALOG_DATA) data,
     public dialogRef: MatDialogRef<StuffDialogComponent>
   ) {
     dialogRef.disableClose = true;
-
-    this.name = data.name;
-    this.price = data.price;
+    this.respon = data
   }
 
   ngOnInit() { }

@@ -34,11 +34,11 @@ export class NavBarComponent implements OnInit {
       this.itemsvc.getMyCart().subscribe(res => {
         if (res.length < 1) {
           this.dialog.open(DialogComponent, {
-            data: { message: 'You did not have any ongoing auctions!' }
+            data: { message: 'You did not have any ongoin sales!' }
           })
         } else {
           this.dialog.open(StuffDialogComponent, {
-            data: {}
+            data: res
           })
         }
       })
