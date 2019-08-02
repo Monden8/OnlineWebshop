@@ -16,22 +16,14 @@
 img {
   border: 0px;
   text-decoration: none;
-  width: 64px;
-  height: 64px;
+  width: 8vh;
+  height: 8vh;
   position: fixed;
   top: -6px;
   left: 10px;
   padding: 10px 0px 0px 10px;
   outline: none;
 }
-/* img:focus,
-img:hover,
-img:visited,
-img:active {
-  outline: none;
-  border: 0px;
-  text-decoration: none;
-} */
 button {
   top: -6px;
   margin-left: 20px;

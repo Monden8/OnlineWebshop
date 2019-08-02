@@ -9,7 +9,6 @@ import { AuthenticationService } from 'src/app/Services/authentication.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
   form: FormGroup;
   valid: boolean = true;
 

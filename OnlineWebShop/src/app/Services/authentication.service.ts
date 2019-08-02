@@ -27,40 +27,41 @@ export class AuthenticationService {
     return this.http.post<any>(`${environment.apiUrl}/register`, user, { headers })
       .pipe(
         tap(res => {
-          let tokens= {jwt:res.t,refreshToken:res.rt}
-          this.doLoginUser(user.username,tokens)
+          let tokens = { jwt: res.t, refreshToken: res.rt }
+          this.doLoginUser(user.username, tokens)
         }),
         mapTo(true),
-        catchError(error => {   
-          console.log('hami')
+        catchError(error => {
           return of(false);
         }));
   }
 
-  // login(user: { username: string, password: string }): Observable<boolean> {
-  //   let headers: HttpHeaders = new HttpHeaders();
-  //   headers = headers.append('Content-Type', 'application/json');
-  //   return this.http.post<any>(`${environment.apiUrl}/login`, user, { headers })
-  //     .pipe(
-  //       tap(res => { this.doLoginUser(user.username, res.tokens) }),
-  //       mapTo(true),
-  //       catchError(error => {
-  //         return of(false);
-  //       }));
-  // }
+  login(user: { username: string, password: string }): Observable<boolean> {
+    let headers: HttpHeaders = new HttpHeaders();
+    headers = headers.append('Content-Type', 'application/json');
+    return this.http.post<any>(`${environment.apiUrl}/login`, user, { headers })
+      .pipe(
+        tap(res => {
+          let tokens = { jwt: res.t, refreshToken: res.rt }
+          this.doLoginUser(user.username, tokens)
+        }),
+        mapTo(true),
+        catchError(error => {
+          return of(false);
+        }));
+  }
 
   logout(): Observable<boolean> {
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
     headers = headers.append('Authorization', `Bearer ${this.getJwtToken()}`);
-    return this.http.post<any>(`${environment.apiUrl}/logout`, {
-      'refreshToken': this.getRefreshToken()
-    }, {}).pipe(
-      tap(() => this.doLogoutUser()),
-      mapTo(true),
-      catchError(error => {
-        return of(false);
-      }));
+    return this.http.post<any>(`${environment.apiUrl}/logout`, { 'rt': this.getRefreshToken() }, { headers })
+      .pipe(
+        tap(() => this.doLogoutUser()),
+        mapTo(true),
+        catchError(error => {
+          return of(false);
+        }));
   }
 
   isLoggedIn() {

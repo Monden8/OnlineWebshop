@@ -1,62 +1,29 @@
-html,body{
-    width: 100vw;
-    height: 100vh;
+example-card {
+  max-width: 400px;
 }
-.main {
-  margin-left: 30px;
-}
-.name {
-  margin-top: 12vh;
-  grid-area: name;
-}
-.image {
-  grid-area: image;
-  margin-top: 100px;
+mat-card {
+  max-height: 80vh;
+  min-width: 80vw;
+  margin-top: 11vh;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  grid-area: menu;
+  flex-direction: row;
 }
-.description {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  grid-area: description;
-}
-.condition {
-  grid-area: condition;
-}
-.username {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  grid-area: right;
-  grid-area: username;
-}
-.time {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  grid-area: time;
-}
-.cost {
-  grid-area: cost;
-}
-.wishlist {
-  grid-area: wishlist;
-}
-.main {
-  display: grid;
-  grid-template-areas:
-    "name name name name"
-    "image image  condition condition "
-    "image image  description description "
-    "image image  description description "
-    "time auction  cost wishlist";
-  grid-gap: 10px;
-  padding: 10px;
+mat-card > *{
+  margin:10px;
 }
 img {
-  width: 80px;
-  height: 80px;
+  max-width: 30vw;
+  max-height: 200px;
+}
+.example-header-image {
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+  background-size: cover;
+}
+.mainmoin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
