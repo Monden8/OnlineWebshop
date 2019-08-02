@@ -15,6 +15,9 @@ export class ItemListService {
     this.headers = this.headers.append('Content-Type', 'application/json');
   }
 
+  submit(data): any {
+    return this.http.post<any>(`${environment.apiUrl}/additem`, data, { headers: this.headers })
+  }
   getItems(): any {
     return this.http.get<any>(`${environment.apiUrl}/main`, { headers: this.headers })
   }
