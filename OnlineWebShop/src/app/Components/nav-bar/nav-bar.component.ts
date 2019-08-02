@@ -26,7 +26,7 @@ export class NavBarComponent implements OnInit {
           })
         } else {
           this.dialog.open(StuffDialogComponent, {
-            data: {}
+            data: res
           })
         }
       })
