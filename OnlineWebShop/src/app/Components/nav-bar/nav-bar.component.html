@@ -4,7 +4,12 @@
     alt="logo"
     routerLink="/"
   />
+  <h2 class="moneyMoney">Welcome {{ username }}</h2>
+  <h2>Your Money: {{ money }}$</h2>
   <div class="yourstuff" *ngIf="!isLoggedIn()">
+    <button mat-raised-button routerLink="/submit">
+      Upload Item
+    </button>
     <button mat-raised-button (click)="func('cart')">
       Your Cart
     </button>

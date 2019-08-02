@@ -11,10 +11,16 @@ import { StuffDialogComponent } from '../stuff-dialog/stuff-dialog.component';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
+  money: number
+  username: string
 
   constructor(private authsvc: AuthenticationService, private dialog: MatDialog, private itemsvc: ItemListService) { }
 
   ngOnInit() {
+    this.itemsvc.getMoney().subscribe(res => {
+      this.money = res.money,
+        this.username = res.username
+    })
   }
 
   func(what: string) {
