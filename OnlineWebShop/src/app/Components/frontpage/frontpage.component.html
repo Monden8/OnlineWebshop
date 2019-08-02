@@ -1,26 +1,19 @@
-<div class="main" *ngFor="let item of items">
-  <div class="name">
-    <h1>{{ item.name }}</h1>
-  </div>
-  <div class="image">
-    <img mat-card-image src="{{ item.img }}" alt="img" />
-  </div>
-  <div class="description">
-    <h2>Description: {{ item.details }}</h2>
-  </div>
-  <div class="condition">
-    <h2>Condition: {{ item.usage }}</h2>
-  </div>
-  <div class="time">
-    <h4>Owner: {{ item.username }}</h4>
-  </div>
-  <div class="auction">
-    <h5>Time Left: {{ item.expiryDate }} timestömp</h5>
-  </div>
-  <div class="cost">
-    <h2>Cost: {{ item.price }}</h2>
-  </div>
-  <div class="wishlist">
+<div class="mainmoin">
+  <mat-card class="example-card" *ngFor="let item of items">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <div>
+        <mat-card-title class="name" >{{ item.name }}</mat-card-title>
+        <mat-card-subtitle>Condition: {{ item.usage }}</mat-card-subtitle>
+      </div>
+    </mat-card-header>
+    <img mat-card-image src="{{ item.img }}" alt="Photo" />
+    <mat-card-content> Description: {{ item.details }} </mat-card-content>
+    <mat-card-actions>
+      <mat-card-subtitle>Remaining: {{ item.timestamp }}</mat-card-subtitle>
+      <mat-card-subtitle>Username: {{ item.username }}</mat-card-subtitle>
+      <mat-card-subtitle>Cost: {{ item.price }}</mat-card-subtitle>
+    </mat-card-actions>
     <button mat-raised-button (click)="check()">Wishlist</button>
-  </div>
+  </mat-card>
 </div>
