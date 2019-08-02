@@ -1,6 +1,7 @@
-const User = require('../models/register.model');
+const User = require("../models/register.model");
 const salt = process.env.salt;
-const sha256 = require('sha256');
+const sha256 = require("sha256");
+
 
 const postUser = (username, password, email, money) => new Promise((resolve, reject) => {
   const newpass = sha256(password + salt);
@@ -12,6 +13,5 @@ const postUser = (username, password, email, money) => new Promise((resolve, rej
       resolve(data);
     }
   });
-});
 
 module.exports = { postUser };
