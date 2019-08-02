@@ -5,6 +5,9 @@
     routerLink="/"
   />
   <div class="yourstuff" *ngIf="!isLoggedIn()">
+      <button mat-raised-button routerLink="/submit">
+          Upload Item
+        </button>
     <button mat-raised-button (click)="func('cart')">
       Your Cart
     </button>
