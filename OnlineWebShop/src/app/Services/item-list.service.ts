@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { tap, mapTo, catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +20,13 @@ export class ItemListService {
   }
 
   bid(data: { _id: any, price: number, rt: string }): any {
-    return this.http.post<any>(`${environment.apiUrl}/buyitem`, data, { headers: this.headers })
+    return this.http.post<any>(`${environment.apiUrl}/buyitem`, data, { headers: this.headers }).pipe(
+      tap(res => {
+      }),
+      mapTo(true),
+      catchError(error => {
+        return of(false);
+      }));
   }
 
 }

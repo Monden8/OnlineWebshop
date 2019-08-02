@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
+import { MatDialog } from '@angular/material';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-login',
@@ -10,9 +12,8 @@ import { AuthenticationService } from 'src/app/Services/authentication.service';
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
-  valid: boolean = true;
 
-  constructor(private fb: FormBuilder, private router: Router, private authsvc: AuthenticationService) { }
+  constructor(private fb: FormBuilder, private router: Router, private authsvc: AuthenticationService,private dialog: MatDialog) { }
 
   hasError(controlName: string, errorName: string) {
     return this.form.controls[controlName].hasError(errorName);
@@ -25,10 +26,9 @@ export class LoginComponent implements OnInit {
     this.authsvc.login(user).subscribe(
       res => {
         if (!res) {
-          this.valid = false;
-          setTimeout(() => {
-            this.valid = true;
-          }, 3000);
+          this.dialog.open(DialogComponent, {
+            data: { message: "UserName is Taken" }
+          })
         } else {
           this.router.navigate(['']);
         }

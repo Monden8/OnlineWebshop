@@ -20,7 +20,7 @@ router.post("/logout", userLogout);
 router.post("/additem", addItem);
 router.get("/main", getItems);
 router.get("/myitems", getMySelling);
-router.get("/buyitem", buyItem);
+router.post("/buyitem", buyItem);
 router.get("/cashmoney", getMoney);
 router.get("/wishlist", wishlist);
 

@@ -13,7 +13,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AuthenticationService } from "./Services/authentication.service";
-// import { AuthInterceptor } from "../../../authentication.interceptor";
+import { AuthenticationInterceptor } from "./Au.interceptor";
 import { MatCardModule } from "@angular/material/card";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatListModule } from "@angular/material/list";
@@ -27,6 +27,7 @@ import {
   MatCheckboxModule
 } from "@angular/material";
 import { AuthGuard } from './Guards/auth.guard';
+import { DialogComponent } from './Components/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -36,10 +37,12 @@ import { AuthGuard } from './Guards/auth.guard';
     FrontpageComponent,
     TrolleyComponent,
     SearchBarComponent,
-    NavBarComponent
+    NavBarComponent,
+    DialogComponent
   ],
 
   imports: [
+    MatInputModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
@@ -70,13 +73,14 @@ import { AuthGuard } from './Guards/auth.guard';
   providers: [
     AuthGuard,
     AuthenticationService,
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: AuthInterceptor,
-    //   multi: true
-    // },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthenticationInterceptor,
+      multi: true
+    },
     PipeService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogComponent]
 })
 export class AppModule { }
