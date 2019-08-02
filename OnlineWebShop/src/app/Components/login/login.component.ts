@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       res => {
         if (!res) {
           this.dialog.open(DialogComponent, {
-            data: { message: "UserName is Taken" }
+            data: { message: "Username or Password is Wrong" }
           })
         } else {
           this.router.navigate(['']);

@@ -28,6 +28,7 @@ import {
 } from "@angular/material";
 import { AuthGuard } from './Guards/auth.guard';
 import { DialogComponent } from './Components/dialog/dialog.component';
+import { StuffDialogComponent } from './stuff-dialog/stuff-dialog.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DialogComponent } from './Components/dialog/dialog.component';
     TrolleyComponent,
     SearchBarComponent,
     NavBarComponent,
-    DialogComponent
+    DialogComponent,
+    StuffDialogComponent
   ],
 
   imports: [
