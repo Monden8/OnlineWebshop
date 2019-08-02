@@ -14,7 +14,9 @@ export class ItemListService {
   constructor(private http: HttpClient) {
     this.headers = this.headers.append('Content-Type', 'application/json');
   }
-
+  getMoney(): any {
+    return this.http.get<any>(`${environment.apiUrl}/cashmoney`, { headers: this.headers })
+  }
   submit(data): any {
     return this.http.post<any>(`${environment.apiUrl}/additem`, data, { headers: this.headers })
   }
