@@ -1,16 +1,16 @@
-const { findUserByToken } = require('../services/findUserByToken-service');
-const { getMoneyByUsername } = require('../services/getMoney-service');
-
+const { getMoneyByUsername } = require("../services/getMoney-service");
+const { getWhosItems } = require("../services/getMyItems_forSale-service");
 
 const getMoney = (req, res) => {
-  const { rt } = req.body;
-
-  findUserByToken(rt)
-    .then((result) => getMoneyByUsername(result))
-    .then(() => { res.status(200).json({ message: 'ok'}) })
-    .catch((err) => {
+  const rt = req.headers["authorization"].slice(7);
+  getWhosItems(rt)
+    .then(result => getMoneyByUsername(result))
+    .then(data => {
+      res.status(200).json(data);
+    })
+    .catch(err => {
       if (err) {
-        res.status(400).json({ status: 'error', message: err.message });
+        res.status(400).json({ status: "error", message: err.message });
       }
     });
 };
