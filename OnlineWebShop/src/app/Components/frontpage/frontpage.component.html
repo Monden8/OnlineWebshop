@@ -14,6 +14,6 @@
       <mat-card-subtitle>Username: {{ item.username }}</mat-card-subtitle>
       <mat-card-subtitle>Cost: {{ item.price }}</mat-card-subtitle>
     </mat-card-actions>
-    <button mat-raised-button (click)="check()">Wishlist</button>
+    <button mat-raised-button (click)="check(item._id,item.price)">Wishlist</button>
   </mat-card>
 </div>

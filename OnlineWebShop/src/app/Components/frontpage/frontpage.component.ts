@@ -24,9 +24,16 @@ export class FrontpageComponent implements OnInit {
   isLoggedIn() {
     return !this.authsvc.isLoggedIn();
   }
-  check() {
+  check(_id, price) {
     if (!this.isLoggedIn()) {
-      //addtocart
+      let data = {
+        _id: _id,
+        price: price,
+        rt: this.authsvc.getRefreshToken()
+      }
+      this.item.bid(data).subscribe(res => {
+        this.items = res
+      });
     } else {
       this.router.navigate(['/login']);
     }

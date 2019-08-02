@@ -90,7 +90,7 @@ export class AuthenticationService {
     this.removeTokens();
   }
 
-  private getRefreshToken() {
+  getRefreshToken() {
     return localStorage.getItem(this.REFRESH_TOKEN);
   }
 
