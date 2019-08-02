@@ -11,6 +11,7 @@
   background-image: url("http://www.hdnicewallpapers.com/Walls/Big/Abstract/White_Texture_Pattern_Abstract_4K_Wallpaper.jpg");
   background-repeat: no-repeat;
   background-size: 100vw;
+  background-attachment: fixed;
 }
 img {
   border: 0px;
