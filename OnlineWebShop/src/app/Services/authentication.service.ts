@@ -68,13 +68,13 @@ export class AuthenticationService {
     return !!this.getJwtToken();
   }
 
-  // refreshToken() {
-  //   return this.http.post<any>(`${environment.apiUrl}/refresh`, {
-  //     'refreshToken': this.getRefreshToken()
-  //   }).pipe(tap((tokens: Tokens) => {
-  //     this.storeJwtToken(tokens.jwt);
-  //   }));
-  // }
+  refreshToken() {
+    return this.http.post<any>(`${environment.apiUrl}/refresh`, {
+      'refreshToken': this.getRefreshToken()
+    }).pipe(tap((tokens: Tokens) => {
+      this.storeJwtToken(tokens.jwt);
+    }));
+  }
 
   getJwtToken() {
     return localStorage.getItem(this.JWT_TOKEN);
@@ -90,7 +90,7 @@ export class AuthenticationService {
     this.removeTokens();
   }
 
-  private getRefreshToken() {
+  getRefreshToken() {
     return localStorage.getItem(this.REFRESH_TOKEN);
   }
 

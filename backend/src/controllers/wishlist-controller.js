@@ -4,8 +4,7 @@ const { findUsersHighestBids } = require('../services/findUsersHighestBids-servi
 
 
 const wishlist = (req, res) => {
-  const { rt } = req.body;
-
+  const rt = req.headers["authorization"].slice(7);
   findUserByToken(rt)
     .then(result => findUsersHighestBids(result))
     .then(data => { res.status(200).json(data) })

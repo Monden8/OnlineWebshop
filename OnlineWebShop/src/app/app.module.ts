@@ -6,14 +6,17 @@ import { LoginComponent } from './Components/login/login.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { FrontpageComponent } from './Components/frontpage/frontpage.component';
 import { PipeService } from './Pipes/timestamp.pipe';
-import { TrolleyComponent } from './Components/trolley/trolley.component';
 import { SearchBarComponent } from './Components/search-bar/search-bar.component';
 import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AuthenticationService } from "./Services/authentication.service";
-// import { AuthInterceptor } from "../../../authentication.interceptor";
+import { AuthenticationInterceptor } from "./Au.interceptor";
+import { AuthGuard } from './Guards/auth.guard';
+import { DialogComponent } from './Components/dialog/dialog.component';
+import { StuffDialogComponent } from './Components/stuff-dialog/stuff-dialog.component';
+import { AddItemComponent } from './Components/add-item/add-item.component';
 import { MatCardModule } from "@angular/material/card";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatListModule } from "@angular/material/list";
@@ -26,7 +29,6 @@ import {
   MatRippleModule,
   MatCheckboxModule
 } from "@angular/material";
-import { AuthGuard } from './Guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -34,12 +36,15 @@ import { AuthGuard } from './Guards/auth.guard';
     LoginComponent,
     RegisterComponent,
     FrontpageComponent,
-    TrolleyComponent,
     SearchBarComponent,
-    NavBarComponent
+    NavBarComponent,
+    DialogComponent,
+    StuffDialogComponent,
+    AddItemComponent
   ],
 
   imports: [
+    MatInputModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
@@ -70,13 +75,14 @@ import { AuthGuard } from './Guards/auth.guard';
   providers: [
     AuthGuard,
     AuthenticationService,
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: AuthInterceptor,
-    //   multi: true
-    // },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthenticationInterceptor,
+      multi: true
+    },
     PipeService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogComponent, StuffDialogComponent]
 })
 export class AppModule { }

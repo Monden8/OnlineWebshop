@@ -4,6 +4,7 @@ import { LoginComponent } from './Components/login/login.component';
 import { FrontpageComponent } from './Components/frontpage/frontpage.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { AuthGuard } from './Guards/auth.guard';
+import { AddItemComponent } from './Components/add-item/add-item.component';
 
 const routes: Routes = [
   {
@@ -19,11 +20,10 @@ const routes: Routes = [
     path: '',
     component: FrontpageComponent
   },
-  // {
-  //   path: 'submit',
-  //   component: SubmitComponent
-  // },
-  // { path: ':channel', component: FrontpageComponent }
+  {
+    path: 'submit',
+    component: AddItemComponent
+}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

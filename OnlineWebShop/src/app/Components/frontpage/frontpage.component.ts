@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
-import { Router } from '@angular/router';
 import { ItemListService } from 'src/app/Services/item-list.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialog } from "@angular/material"
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-frontpage',
@@ -10,11 +12,15 @@ import { ItemListService } from 'src/app/Services/item-list.service';
 })
 export class FrontpageComponent implements OnInit {
   items: Array<any>;
+  form: FormGroup;
 
-  constructor(private authsvc: AuthenticationService, private router: Router, private item: ItemListService) { }
+  constructor(private fb: FormBuilder, private authsvc: AuthenticationService, private item: ItemListService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.getAllItems()
+    this.form = this.fb.group({
+      bid: ['', ,]
+    });
   }
   getAllItems() {
     this.item.getItems().subscribe(res => {
@@ -24,11 +30,31 @@ export class FrontpageComponent implements OnInit {
   isLoggedIn() {
     return !this.authsvc.isLoggedIn();
   }
-  check() {
+  hasError(controlName: string, errorName: string) {
+    return this.form.controls[controlName].hasError(errorName);
+  }
+  check(_id) {
     if (!this.isLoggedIn()) {
-      //addtocart
+      let data = {
+        _id: _id,
+        price: this.form.get('bid').value,
+        rt: this.authsvc.getRefreshToken()
+      }
+      this.item.bid(data).subscribe(
+        res => {
+          if (res) {
+            this.form.reset('bid')
+            this.getAllItems()
+          } else {
+            this.dialog.open(DialogComponent, {
+              data: { message: "Too low Bid" }
+            })
+          }
+        })
     } else {
-      this.router.navigate(['/login']);
+      this.dialog.open(DialogComponent, {
+        data: { message: "Please Login First" }
+      })
     }
   }
 }

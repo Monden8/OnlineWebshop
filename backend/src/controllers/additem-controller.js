@@ -2,7 +2,8 @@ const { findUserByToken } = require("../services/findUserByToken-service");
 const { addnewItem } = require("../services/addItem-service");
 
 const addItem = (req, res) => {
-  const { name, price, expiryDate, img, details, usage, rt } = req.body;
+  const { name, price, expiryDate, img, details, usage } = req.body;
+  const rt = req.headers["authorization"].slice(7);
 
   findUserByToken(rt)
     .then(result =>

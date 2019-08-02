@@ -4,6 +4,14 @@
     alt="logo"
     routerLink="/"
   />
+  <div class="yourstuff" *ngIf="!isLoggedIn()">
+    <button mat-raised-button (click)="func('cart')">
+      Your Cart
+    </button>
+    <button mat-raised-button (click)="func('item')">
+      Your Items
+    </button>
+  </div>
   <div>
     <button mat-raised-button *ngIf="isLoggedIn()" routerLink="/login">
       Login

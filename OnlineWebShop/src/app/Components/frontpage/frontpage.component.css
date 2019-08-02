@@ -10,16 +10,18 @@ mat-card {
   align-items: center;
   flex-direction: row;
 }
-mat-card > *{
-  margin:10px;
+mat-card > * {
+  margin: 10px;
 }
 img {
   max-width: 30vw;
-  max-height: 200px;
+  max-height: 30vw;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 .example-header-image {
   background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
-  background-size: cover;
 }
 .mainmoin {
   display: flex;

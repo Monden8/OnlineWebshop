@@ -1,0 +1,75 @@
+<form action="POST" class="formo" [formGroup]="form">
+  <mat-form-field>
+    <input
+      type="text"
+      matInput
+      placeholder="Your Item*"
+      formControlName="title"
+      autocomplete="off"
+    />
+    <mat-error *ngIf="hasError('title', 'required')"
+      >Title is required.</mat-error
+    >
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      type="number"
+      matInput
+      placeholder="The minimum price*"
+      formControlName="money"
+      autocomplete="off"
+    />
+    <mat-error *ngIf="hasError('money', 'required')"
+      >Amount is required.</mat-error
+    >
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      type="text"
+      matInput
+      placeholder="Your Item's Expiry Date*"
+      formControlName="exp"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      type="url"
+      matInput
+      placeholder="Your Online Img*"
+      formControlName="img"
+    />
+    <mat-error *ngIf="hasError('img', 'required')">URL is required.</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      type="text"
+      matInput
+      placeholder="Your Item's Details*"
+      formControlName="detail"
+      autocomplete="off"
+    />
+    <mat-error *ngIf="hasError('detail', 'required')"
+      >Detail is required.</mat-error
+    >
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      type="text"
+      matInput
+      placeholder="Your Item's usage*"
+      formControlName="usage"
+      autocomplete="off"
+    />
+    <mat-error *ngIf="hasError('usage', 'required')"
+      >Usage is required.</mat-error
+    >
+  </mat-form-field>
+  <button
+    type="button"
+    mat-raised-button
+    [disabled]="form.invalid"
+    (click)="submitData()"
+  >
+    Send
+  </button>
+</form>
