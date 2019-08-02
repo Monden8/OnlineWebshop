@@ -1,11 +1,10 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-
+import { Component, OnInit, Inject } from "@angular/core";
+import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 
 @Component({
-  selector: 'app-dialog',
-  templateUrl: './dialog.component.html',
-  styleUrls: ['./dialog.component.css']
+  selector: "app-dialog",
+  templateUrl: "./dialog.component.html",
+  styleUrls: ["./dialog.component.css"]
 })
 export class DialogComponent implements OnInit {
   errormsg: string;
@@ -20,7 +19,7 @@ export class DialogComponent implements OnInit {
     this.statuscode = 400;
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   close() {
     this.dialogRef.close();
