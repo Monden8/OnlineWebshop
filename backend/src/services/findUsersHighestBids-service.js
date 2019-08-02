@@ -6,6 +6,7 @@ const findUsersHighestBids = result =>
       if (err) {
         reject(err);
       } else {
+        console.log(data);
         resolve(data);
       }
     });
